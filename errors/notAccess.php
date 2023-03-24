@@ -11,7 +11,7 @@
 <body>
     <!-- Textos da página -->
     <div id="notAccess">
-        <h1>Você não tem acesso a página solicitada!</h1> 
+        <p>VOCÊ NÃO TEM ACESSO A PÁGINA SOLICITADA!</p> 
         <a href="../index.php">RETORNAR</a>
     </div> 
 </body>
