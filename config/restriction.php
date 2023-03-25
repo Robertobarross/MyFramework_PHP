@@ -19,7 +19,7 @@ if(isset($_POST['senha'])) { // Declarando variáveis da conexão
 }
 
 if(!isset($_SESSION['login'])) { // Se o usuário não tiver cadastrado será redirecionado para notAccess
-    header('location:/PROJETOS_PHP/MyFramework/errors/notAccess.php');
+    header('location: notAccess');
 }
 
 ?>
