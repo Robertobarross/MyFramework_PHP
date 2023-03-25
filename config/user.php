@@ -1,3 +1,3 @@
 <?php
-    echo "Bem vindo(a); "; echo $_SESSION['nome']; // Usuário logado
+    echo "Bem vindo(a); "; echo $_SESSION['email']; // Usuário logado
 ?>
