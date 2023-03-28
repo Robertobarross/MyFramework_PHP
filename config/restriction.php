@@ -13,13 +13,13 @@ if(isset($_POST['email'])) { // Declarando variáveis da conexão
 if(isset($_POST['senha'])) { // Declarando variáveis da conexão
     $senha = $_POST['senha'];
 
-    if($nome == "nome" && $email == "email" && $senha /*and*/ == "senha") { // Se email e password estiveram cadastrados
+    if($nome == "nome" && $email == "email" && $senha == "senha") { // Se email e password estiveram cadastrados
         $_SESSION['login'] =  true; // O login será autorizado
     }
 }
 
 if(!isset($_SESSION['login'])) { // Se o usuário não tiver cadastrado será redirecionado para notAccess
-    header('location: notAccess');
+    header('location: not-found');
 }
 
 ?>
