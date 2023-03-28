@@ -13,7 +13,7 @@
         <h1 align="center">Welcome MyFramework</h1>  
         <a href="register">Register</a>
         <br>
-        <a href="logar">Login</a>
+        <a href="login">Login</a>
     </div>    
 </body>
 </html>
