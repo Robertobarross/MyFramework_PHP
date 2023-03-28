@@ -11,7 +11,7 @@
 <body>
     <h1>Register</h1>
     <div>
-        <form action="./views/auth/registrations.php" method="POST" enctype="multipart/form-data">
+        <form action="registrations" method="POST" enctype="multipart/form-data">
             <p><input type="text" name="nome" class="campos-form" placeholder="Cadastrar nome do usuário" required></p>
             
             <p><input type="email" name="email" class="campos-form" placeholder="Cadastrar e-mail" required></p>
