@@ -18,7 +18,7 @@ try {
 
 if ($senha === $repeteSenha) {
     echo "<script>alert('O usuário foi cadastrado!);window.history.go(-1)</script>";
-    header('location: logar');
+    header('location: login');
 }else{
    //
 }
