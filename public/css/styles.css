@@ -1,15 +1,16 @@
 body{
     margin: 0;
+    background-color: #F8F8FF;
 }
 /*
 Estilização da página notAccess
 */
-#notAccess{
+#not-found{
     border: 1px solid DarkGray;
     margin-top: 50px;
     text-align: center;
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     padding: 10px;
-    color: DarkGray;
+    color: gray;
 }
