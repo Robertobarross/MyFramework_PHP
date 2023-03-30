@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    background-color: #F8F8FF;
+}
+/*
+Estilização da página not-found
+*/
+#not-found{
+    border: 1px solid DarkGray;
+    margin-top: 50px;
+    text-align: center;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    color: gray;
+}
+/*
+Estilização da página welcome
+*/
+#welcome{
+    border: 1px solid #A9A9A9;
+    margin-top: 50px;
+    text-align: center;
+    padding: 10px;
+}
+.titulo{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.links{
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*
+Estilização do login
+*/
+#login{
+    border: 1px solid #D3D3D3;
+    border-radius: 10px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    padding: 2%;
+    text-align: center;
+    background-color: #D3D3D3;
+}
+.titulo-login{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #696969;
+}
+.form-login{
+    width: 80%;
+    border: 1px solid #D3D3D3;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+}
+.btn-login{
+    width: 35%;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #363636;
+    border: 1px solid #363636;
+    color: #F8F8FF;
+    border-radius: 5px;
+    padding: 4px;
+}
+.links-login{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
