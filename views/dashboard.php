@@ -13,8 +13,10 @@ include('./config/restriction.php');
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Welcome</h1>  
-    <p><a href="logout" class="link">LOGOUT</a></p>
-    <a href="editProfile">Editar perfil</a>
+    <div id="welcome">
+        <h1 class="titulo">Dashboard</h1>  
+        <p><a href="editProfile" class="links">Perfil</a> |
+        <a href="logout" class="links">Sair</a></p>
+    </div>
 </body>
 </html>
