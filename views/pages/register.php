@@ -13,13 +13,15 @@
     <div id="login">
         <h1 class="titulo-login">Register</h1>
         <form action="registrations" method="POST" enctype="multipart/form-data">
-            <p><input type="text" name="nome" class="form-login" placeholder="Digite seu nome" required></p>
+            <p><input type="text" name="nome" class="form-login" placeholder="Digite seu nome" maxlength="80" required></p>
             
-            <p><input type="email" name="email" class="form-login" placeholder="Cadastre seu email" required></p>
+            <p><input type="email" name="email" class="form-login" placeholder="Cadastre seu email" maxlength="80" required></p>
         
-            <p><input type="password" name="senha" class="form-login" placeholder="Senha" maxlength="8" required></p>
+            <p><input type="password" name="senha" class="form-login" placeholder="Senha" maxlength="8" minlength="6" required></p>
 
-            <p><input type="password" name="repeteSenha" class="form-login" placeholder="Repetir senha" maxlength="8" required></p>
+            <p><input type="password" name="repeteSenha" class="form-login" placeholder="Repetir senha" maxlength="8" minlength="6" required></p>
+
+            <p><input type="checkbox" name="checkbox" class="robo" required>Não sou um robô</p>
 
             <p><button type="submit" value="cadastrar" class="btn-login">Register</button>
             <input type="reset" value="limpar" class="btn-login"></p>
