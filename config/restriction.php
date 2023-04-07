@@ -1,6 +1,6 @@
 <?php // Restrição a usuário não logado
 // Obs. Incluir em todas as páginas onde é obrigatório estar logado
-session_start(); // Estartando a sessão
+@session_start(); // Estartando a sessão
 
 if(isset($_POST['nome'])) { // Declarando variáveis da conexão
     $nome = $_POST['nome'];
@@ -20,6 +20,7 @@ if(isset($_POST['senha'])) { // Declarando variáveis da conexão
 
 if(!isset($_SESSION['login'])) { // Se o usuário não tiver cadastrado será redirecionado para notAccess
     header('location: not-found');
+    header('location: login');
 }
 
 ?>
