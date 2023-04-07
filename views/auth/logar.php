@@ -1,10 +1,13 @@
 <?php
 // Conexão com banco de dados
+/*
 $dsn = 'mysql:host=localhost;dbname=db_myframework_php';
 $username = 'root';
 $password = '';
 
 $conn = new PDO($dsn, $username, $password);
+*/
+include('./database/connect.php');
 
 // Campos do formulário de login
 @$email = $_POST['email'];
