@@ -1,8 +1,11 @@
 <?php
    // Conexão com o banco de dados
+   /*
    $dsn = 'mysql:host=localhost;dbname=db_myframework_php';
    $username = 'root';
    $password = '';
+   */
+  include('./database/connect.php');
 
 try {
     $db = new PDO($dsn, $username, $password);
