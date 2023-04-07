@@ -31,5 +31,10 @@
    include "errors/{$rota[0]}.php";
 }
 
+  // Rota database
+  if (file_exists("database/{$rota[0]}.php")){
+   include "database/{$rota[0]}.php";
+}
+
 
 ?>
