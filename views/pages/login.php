@@ -14,9 +14,11 @@
         <h1 class="titulo-login">Login</h1>
         <!-- Formulário de login -->
         <form action="logar" method="POST" enctype="multipart/form-data">  
-            <p><input type="email" name="email" class="form-login" placeholder="Email" required></p>
+            <p><input type="email" name="email" class="form-login" placeholder="Email" maxlength="80" required></p>
         
-            <p><input type="password" name="senha" class="form-login" placeholder="Senha" required></p>
+            <p><input type="password" name="senha" class="form-login" placeholder="Senha" maxlength="8" minlength="6" required></p>
+
+            <p><input type="checkbox" name="checkbox" class="robo" required>Não sou um robô</p>
 
             <p><button type="submit" value="cadastrar" class="btn-login">Logar</button>
             <input type="reset" value="limpar" class="btn-login"></p>
