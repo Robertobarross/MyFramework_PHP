@@ -12,9 +12,9 @@
 <body>
     <div id="welcome">
         <h1 class="titulo">Welcome MyFramework</h1>  
-        
-        <a href="register" class="links">Register</a>
-        <br>
+     
+        <a href="Dashboard" class="links">Dashboard</a> |
+        <a href="register" class="links">Register</a> |
         <a href="login" class="links">Login</a>
     </div>    
 </body>
