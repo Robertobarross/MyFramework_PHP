@@ -55,6 +55,9 @@ Estilização do login
     font-family: Arial, Helvetica, sans-serif;
     padding: 5px;
 }
+.robo{
+    width: 30px; 
+}
 .btn-login{
     width: 35%;
     font-size: 18px;
