@@ -1,31 +1,56 @@
 <?php
 // Conexão com banco de dados
-/*
-$dsn = 'mysql:host=localhost;dbname=db_myframework_php';
-$username = 'root';
-$password = '';
-
-$conn = new PDO($dsn, $username, $password);
-*/
 include('./database/connect.php');
 
-// Campos do formulário de login
-@$email = $_POST['email'];
-@$senha = $_POST['senha'];
+// Conecta ao banco de dados
+try {
+    $pdo = new PDO($dsn, $username, $password);
+} catch (PDOException $e) {
+    echo 'Erro ao conectar ao banco de dados: ' . $e->getMessage();
+    exit;
+}
 
-// Verifica se usuário e senha estão cadastrados
-$stmt = $conn->prepare("SELECT * FROM users WHERE email = :email AND senha = MD5(:senha)");
-$stmt->bindParam(':email', $email);
-$stmt->bindParam(':senha', $senha);
-$stmt->execute();
+// Processa o formulário de login
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
 
-// Se o usuário estiver cadastrado e os campos digitados corretamente, o login será efetuado.
-if ($stmt->rowCount() == 1) {
-    session_start();
-    $_SESSION['login'] = true;
-    header("Location: dashboard");
-} else {
-    // Se as informações não existirem ou incorretas
-    echo "<script>alert('Usuário ou senha incorretos!');window.history.go(-1)</script>";
+    // Busca o usuário correspondente ao email fornecido
+    $stmt = $pdo->prepare('SELECT id, nome, email, senha FROM users WHERE email = :email');
+    $stmt->execute(['email' => $email]);
+    $usuario = $stmt->fetch();
+
+    // Verifica se o usuário existe e se a senha está correta
+    if ($usuario && password_verify($senha, $usuario['senha'])) {
+        // Autenticação bem-sucedida, armazena o ID do usuário na sessão
+        session_start();
+        $_SESSION['login'] = $usuario['id'];
+        header("Location: dashboard");
+        exit;
+    } else {
+        // Credenciais inválidas, exibe uma mensagem de erro
+        echo "<div class='erro'>
+               Email ou senha inválidos.
+                <br>
+                Retornar | 
+                <a href='login'>
+                Login
+                </a>
+            </div>";
+    }
 }
 ?>
+
+<style type="text/css">
+    .erro{
+        margin: 0;
+        width: 97%;
+        height: 10%;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: red;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
