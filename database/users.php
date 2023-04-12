@@ -1,14 +1,7 @@
 <?php
 // Retorna todos os registros do banco de dados
-/*
-$dsn = 'mysql:host=localhost;dbname=db_myframework_php';
-$username = 'root';
-$password = '';
-
-$conn = new PDO($dsn, $username, $password);
-*/
-
 include('connect.php');
+include('./config/restriction.php');
 
 // Suponha que o ID do usuário logado seja armazenado na variável $user_id
 $stmt = $conn->prepare("SELECT * FROM users WHERE id = :id");
