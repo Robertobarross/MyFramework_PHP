@@ -1,35 +1,89 @@
 <?php
    // Conexão com o banco de dados
-   /*
-   $dsn = 'mysql:host=localhost;dbname=db_myframework_php';
-   $username = 'root';
-   $password = '';
-   */
-  include('./database/connect.php');
+  @include('./database/connect.php');
 
-try {
+  // Conexão com o banco de dados
+  try {
     $db = new PDO($dsn, $username, $password);
-} catch (PDOException $e) {
+  } catch (PDOException $e) {
     echo 'Erro ao conectar com o banco de dados: ' . $e->getMessage();
 }
+   // Variávei da formulário login
+   @$nome = $_POST['nome'];
+   @$email = $_POST['email'];
+   @$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
 
-// Recebe os dados do formulário
-   $nome = $_POST['nome'];
-   $email = $_POST['email'];
-   $senha = $_POST['senha'];
-   $repeteSenha = $_POST['repeteSenha'];
+   // Insere as informção no BD
+   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha) VALUES (:nome, :email, :senha)");
 
-if ($senha === $repeteSenha) {
-    echo "<script>alert('O usuário foi cadastrado!);window.history.go(-1)</script>";
-    header('location: login');
-}else{
-   //
+   // Declarando variáveis
+   @$stmt->bindParam(':nome', $nome);
+   @$stmt->bindParam(':email', $email);
+   @$stmt->bindParam(':senha', $senha);
+
+   // Verifica se as senhas são iguais
+   @$repeteSenha = $_POST['repeteSenha'];
+   if ($_POST['senha'] != $_POST['repeteSenha']) {
+    echo "<div style='background-color: red; 
+    text-align: center; 
+    font-size: 18px; 
+    color: white; 
+    font-family: Arial;
+    height: 10%;
+    padding: 20px; '>
+                As senhas que você digitou não são iguais!
+                <br>
+                Retornar | 
+                <a href='register'>
+                Register
+              </a>
+            </div>"; 
+     exit();
+   }
+
+   // Verifica se o cadastro deu certo
+   if ($stmt->execute()) {
+        echo "<div class='login'>
+                Usuário $nome cadastrado com sucesso!
+                <br>
+                Fazer | 
+                <a href='login'>
+                Login
+                </a>
+            </div>"; 
+   } else {
+       echo "<div class='erro'>
+                  Erro! O email: $email já existe na nossa base de dados.
+                  <br>
+                  Retornar | 
+                  <a href='register'>
+                  Register
+               </a>
+            </div>";   
 }
-
-   // Insere os dados no banco de dados
-   $stmt = $db->prepare("INSERT INTO users (nome, email, senha) VALUES (?, ?, MD5(?))");
-   $stmt->execute([$nome, $email, $senha]);
-
-   echo "<script>alert('As senhas que você digitou não são iguais!');window.history.go(-1)</script>";
-
 ?>
+
+<style type="text/css">
+    .erro{
+        margin: 0;
+        width: 97%;
+        height: 10%;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: red;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+    .login{
+        margin: 0;
+        width: 97%;
+        height: 10%;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: green;
+        color: white;
+        text-align: center;
+        padding: 20px;
+    }
+</style>
