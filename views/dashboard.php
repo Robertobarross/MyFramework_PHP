@@ -15,8 +15,12 @@ include('./config/restriction.php');
 <body>
     <div id="welcome">
         <h1 class="titulo">Dashboard</h1>  
-        <p><a href="editProfile" class="links">Perfil</a> |
+        <p><a href="profile" class="links">Perfil</a> |
         <a href="logout" class="links">Sair</a></p>
-    </div>
+    </div>  
+    
+    <?php
+       @include('./database/userLogado.php');
+    ?>
 </body>
 </html>
