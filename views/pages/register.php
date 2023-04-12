@@ -12,6 +12,7 @@
 <body>
     <div id="login">
         <h1 class="titulo-login">Register</h1>
+
         <form action="registrations" method="POST" enctype="multipart/form-data">
             <p><input type="text" name="nome" class="form-login" placeholder="Digite seu nome" maxlength="80" required></p>
             
@@ -19,7 +20,7 @@
         
             <p><input type="password" name="senha" class="form-login" placeholder="Senha" maxlength="8" minlength="6" required></p>
 
-            <p><input type="password" name="repeteSenha" class="form-login" placeholder="Repetir senha" maxlength="8" minlength="6" required></p>
+            <p><input type="password" name="repeteSenha" class="form-login" placeholder="Confirmar senha" maxlength="8" minlength="6" required></p>
 
             <p><input type="checkbox" name="checkbox" class="robo" required>Não sou um robô</p>
 
