@@ -11,8 +11,9 @@ if(!isset($_SESSION['login'])){
  // echo "Bem vindo; $email";
 }
 
+// Faz a consulta no banco de dados
 $login = $_SESSION['login'];
-$stmt = $conn->prepare("SELECT nome, email FROM users WHERE id = :id");
+$stmt = $conn->prepare("SELECT nome, email, id FROM users WHERE id = :id");
 $stmt->bindParam(":id", $login);
 $stmt->execute();
 $login = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -34,6 +35,20 @@ $login = $stmt->fetch(PDO::FETCH_ASSOC);
 </p>
 <hr>
 </div>
+
+
+<form method="post" action="editSenha">
+    <input type="text" name="id" value="<?php echo $login['id']; ?>">
+    <label for="nova_senha">Nova senha:</label>
+    <input type="password" name="nova_senha" id="nova_senha">
+    <input type="submit" value="Alterar senha">
+</form>
+
+
+
+
+
+
 
 <style>
   #perfil{
