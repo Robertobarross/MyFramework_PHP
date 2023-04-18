@@ -2,7 +2,7 @@
 // Rotas amigáveis com PHP
 
  // Retorna a página inicial do projeto
- $rota = explode("/", $_GET['url']  ?? 'welcome');
+ $rota = explode("/", $_GET['url']  ?? 'inicio');
 
  // var_dump($rota);
 
