@@ -24,7 +24,7 @@
             <input type="reset" value="limpar" class="btn-login"></p>
 
             <a href="register" class="links-login">Register</a> |
-            <a href="welcome" class="links-login">Início</a> |
+            <a href="inicio" class="links-login">Início</a> |
             <a href="#" class="links-login">Esqueci minha senha</a>
         </form>
     </div>  
