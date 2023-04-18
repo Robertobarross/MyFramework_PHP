@@ -28,7 +28,7 @@
             <input type="reset" value="limpar" class="btn-login"></p>
 
             <a href="login" class="links-login">login</a> |
-            <a href="welcome" class="links-login">Início</a>
+            <a href="inicio" class="links-login">Início</a>
         </form>
     </div>   
 </body>
