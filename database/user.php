@@ -19,60 +19,54 @@ $stmt->execute();
 $login = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<div id="perfil">
-<p class="nome">Perfil |
-<?php echo $login['nome']; ?></p>
-</div>
-
+<!-- Id e email do usuário lagodo -->
 <div id="dados">
-<p class="dados-user"><?php echo "id: "; echo $_SESSION['login']; ?></p>
+<p class="dados-user">PERFIL</p>
+<p class="dados-user"><?php echo "Nome | "; echo $login['nome']; ?></p>
 <p class="dados-user">Email | <?php echo $login['email']; ?></p>
 <hr>
-<p>
-  <a href="#" class="dados-user">Trocar senha</a> |
-  <a href="dashboard" class="dados-user">Dashboard</a> |
-  <a href="logout" class="dados-user">Sair</a>
-</p>
+
+<!-- Edita senha do usuário lagodo -->
+<form method="post" action="editSenha">
+    <p class="dados-user">Alterar senha | id:
+    <input type="text" class="id-user" name="id" value="<?php echo $login['id']; ?>" readonly>
+    </p>
+    <p class="dados-user">
+    <input type="password" name="nova_senha" id="nova_senha" class="dados-user" placeholder="Nova senha" maxlength="8" minlength="6">
+    </p>
+    <p class="dados-user">
+    <input type="password" name="repetir_senha" id="repetir_senha" class="dados-user" placeholder="Repetir senha" maxlength="8" minlength="6">
+    </p>
+    <input type="submit" value="Alterar senha" class="btn">
+</form>
 <hr>
 </div>
 
-
-<form method="post" action="editSenha">
-    <input type="text" name="id" value="<?php echo $login['id']; ?>">
-    <label for="nova_senha">Nova senha:</label>
-    <input type="password" name="nova_senha" id="nova_senha">
-    <input type="submit" value="Alterar senha">
-</form>
-
-
-
-
-
-
-
+<!-- Estilização -->
 <style>
-  #perfil{
-    width: 100%;
-    height: 40px;
-    padding: 8px;
-    background-color: #363636;
-  }
-  .nome{
-    font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    float: right;
-    margin-right: 10px;
-    color: white;
-  }
   #dados{
-    width: 100%;
+    width: 85%;
     height: auto;
     padding: 20px;
+    float: right;
   }
   .dados-user{
     font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
+    color: #808080;
+  }
+  .btn{
+    width: 200px;
+    border: 1px solid #363636;
+    text-align: center;
+    background-color: #363636;
+    color: white;
+  }
+  .id-user{
+    border: none;
+    width: 50%;
+    color: #808080;
   }
 </style>
 
