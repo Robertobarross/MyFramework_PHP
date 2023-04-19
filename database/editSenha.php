@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Redirecionar para a página de perfil do usuário (substitua pela sua própria página)
     @$repetir_senha = $_POST['repetir_senha'];
-    if ($_POST['nova_senha'] != $_POST['repetir_senha']) {
+    if ($_POST['nova_senha'] != $_POST['repetir_senha']) { 
         echo "<div style='background-color: red; 
                   text-align: center; 
                   font-size: 18px; 
