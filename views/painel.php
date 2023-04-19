@@ -17,6 +17,10 @@ include('./config/restriction.php');
        @include('template.php');
     ?>
     
-    <h1 class="titulo">PAINEL</h1> 
+    <div id="painel">
+        <p class="titulo-painel">PAINEL</p> 
+        <p class="titulo-painel">Bem vindo ao painel!</p>  
+        <hr>  
+    </div>
 </body>
 </html>
