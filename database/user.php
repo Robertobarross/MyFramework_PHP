@@ -13,7 +13,7 @@ if(!isset($_SESSION['login'])){
 
 // Faz a consulta no banco de dados
 $login = $_SESSION['login'];
-$stmt = $conn->prepare("SELECT nome, email, id FROM users WHERE id = :id");
+$stmt = $conn->prepare("SELECT nome, email, id, data_cadastro FROM users WHERE id = :id");
 $stmt->bindParam(":id", $login);
 $stmt->execute();
 $login = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -24,6 +24,7 @@ $login = $stmt->fetch(PDO::FETCH_ASSOC);
 <p class="dados-user">PERFIL</p>
 <p class="dados-user"><?php echo "Nome | "; echo $login['nome']; ?></p>
 <p class="dados-user">Email | <?php echo $login['email']; ?></p>
+<p class="dados-user">Cadastro | <?php echo $login['data_cadastro']; ?></p>
 <hr>
 
 <!-- Edita senha do usuário lagodo -->
