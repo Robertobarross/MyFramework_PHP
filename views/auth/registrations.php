@@ -8,18 +8,21 @@
   } catch (PDOException $e) {
     echo 'Erro ao conectar com o banco de dados: ' . $e->getMessage();
 }
+
    // Variávei da formulário login
    @$nome = $_POST['nome'];
    @$email = $_POST['email'];
    @$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+   @$data_cadastro = $_POST['data_cadastro'];
 
    // Insere as informção no BD
-   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha) VALUES (:nome, :email, :senha)");
+   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha, data_cadastro) VALUES (:nome, :email, :senha, :data_cadastro)");
 
    // Declarando variáveis
    @$stmt->bindParam(':nome', $nome);
    @$stmt->bindParam(':email', $email);
    @$stmt->bindParam(':senha', $senha);
+   @$stmt->bindParam(':data_cadastro', $data_cadastro);
 
    // Verifica se as senhas são iguais
    @$repeteSenha = $_POST['repeteSenha'];
@@ -44,7 +47,7 @@
    // Verifica se o cadastro deu certo
    if ($stmt->execute()) {
         echo "<div class='login'>
-                Usuário $nome cadastrado com sucesso!
+                Usuário (a) $nome cadastrado com sucesso!
                 <br>
                 Fazer | 
                 <a href='login'>
