@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Autenticação bem-sucedida, armazena o ID do usuário na sessão
         session_start();
         $_SESSION['login'] = $usuario['id'];
-        header("Location: inicio");
+        header("Location: painel");
         exit;
     } else {
         // Credenciais inválidas, exibe uma mensagem de erro
