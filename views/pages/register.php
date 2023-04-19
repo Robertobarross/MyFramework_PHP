@@ -22,6 +22,10 @@
 
             <p><input type="password" name="repeteSenha" class="form-login" placeholder="Confirmar senha" maxlength="8" minlength="6" required></p>
 
+            <?php $data_cadastro = date("d/m/Y"); ?>
+
+            <p><input type="text" name="data_cadastro" class="form-login" value="<?php echo "" . $data_cadastro; ?>" readonly style="display:none"></p>
+
             <p><input type="checkbox" name="checkbox" class="robo" required>Não sou um robô</p>
 
             <p><button type="submit" value="cadastrar" class="btn-login">Register</button>
