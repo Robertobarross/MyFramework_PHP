@@ -25,7 +25,7 @@
 
             <a href="register" class="links-login">Register</a> |
             <a href="inicio" class="links-login">Início</a> |
-            <a href="#" class="links-login">Esqueci minha senha</a>
+            <a href="recuperarSenha" class="links-login">Esqueci minha senha</a>
         </form>
     </div>  
 </body>
