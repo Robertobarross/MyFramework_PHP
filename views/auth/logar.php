@@ -16,17 +16,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $senha = $_POST['senha'];
 
     // Busca o usuário correspondente ao email fornecido
-    $stmt = $pdo->prepare('SELECT id, nome, email, senha FROM users WHERE email = :email');
+    $stmt = $pdo->prepare('SELECT id, nome, email, senha, nivel FROM users WHERE email = :email');
     $stmt->execute(['email' => $email]);
+   // $stmt->execute(['nivel' => $nivel]);
     $usuario = $stmt->fetch();
 
     // Verifica se o usuário existe e se a senha está correta
     if ($usuario && password_verify($senha, $usuario['senha'])) {
-        // Autenticação bem-sucedida, armazena o ID do usuário na sessão
-        session_start();
-        $_SESSION['login'] = $usuario['id'];
-        header("Location: painel");
-        exit;
+        // Autenticação bem-sucedida, verifica o nível do usuário
+        if ($usuario['nivel'] == 'admin') {
+            // Usuário administrador, armazena o ID do usuário na sessão e redireciona para o painel de administração
+            session_start();
+            $_SESSION['login'] = $usuario['id'];
+            header("Location: adm");
+            exit;
+        } elseif ($usuario['nivel'] == 'usuario') {
+            // Usuário comum, armazena o ID do usuário na sessão e redireciona para o painel de usuário
+            session_start();
+            $_SESSION['login'] = $usuario['id'];
+            header("Location: painel");
+            exit;
     } else {
         // Credenciais inválidas, exibe uma mensagem de erro
         echo "<div class='erro'>
@@ -38,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </a>
             </div>";
     }
+}
 }
 ?>
 
