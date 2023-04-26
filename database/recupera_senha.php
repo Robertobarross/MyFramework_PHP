@@ -1,14 +1,10 @@
 <?php
 // Conecta ao banco de dados
 include('connect.php');
-require './PHPMailer-master';
 
 // Recuperar senha
 if (isset($_POST['email'])) {
     $email = $_POST['email'];
-
-    // Conexão com o banco de dados
-   // $pdo = new PDO('mysql:host=localhost;dbname=seu_banco_de_dados', 'seu_usuario', 'sua_senha');
 
     // Verificar se o e-mail está registrado
     $stmt = $conn->prepare('SELECT * FROM users WHERE email = :email');
@@ -28,9 +24,9 @@ if (isset($_POST['email'])) {
         $mensagem = 'Sua nova senha é: ' . $nova_senha;
         mail($email, $assunto, $mensagem);
 
-        echo 'Uma nova senha foi enviada para o seu e-mail.';
+        echo 'Uma nova senha foi enviada para o seu email.';
     } else {
-        echo 'O endereço de e-mail informado não está registrado.';
+        echo 'O email informado não está cadastrado em nossa base de dados.';
     }
 }
 ?>
