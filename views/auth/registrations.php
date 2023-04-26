@@ -13,15 +13,17 @@
    @$nome = $_POST['nome'];
    @$email = $_POST['email'];
    @$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+   @$nivel = $_POST['nivel'];
    @$data_cadastro = $_POST['data_cadastro'];
 
    // Insere as informção no BD
-   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha, data_cadastro) VALUES (:nome, :email, :senha, :data_cadastro)");
+   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha, nivel, data_cadastro) VALUES (:nome, :email, :senha, :nivel, :data_cadastro)");
 
    // Declarando variáveis
    @$stmt->bindParam(':nome', $nome);
    @$stmt->bindParam(':email', $email);
    @$stmt->bindParam(':senha', $senha);
+   @$nivel->bindParam(':nivel', $nivel);
    @$stmt->bindParam(':data_cadastro', $data_cadastro);
 
    // Verifica se as senhas são iguais
