@@ -13,7 +13,10 @@ if(isset($_POST['email'])) { // Declarando variáveis da conexão
 if(isset($_POST['senha'])) { // Declarando variáveis da conexão
     $senha = $_POST['senha'];
 
-    if($nome == "nome" && $email == "email" && $senha == "senha") { // Se email e password estiveram cadastrados
+if(isset($_POST['nivel'])) { // Declarando variáveis da conexão
+        $nivel = $_POST['nivel'];
+}
+    if($nome == "nome" && $email == "email" && $senha == "senha" && $nivel == 'nivel') { // Se email e password estiveram cadastrados
         $_SESSION['login'] =  true; // O login será autorizado
     }
 }
