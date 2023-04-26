@@ -14,6 +14,8 @@ include('./config/restriction.php'); // Só permite usuário logado
         <img src="./public/assets/MyFramework.png" alt="Logomarca" class="logo">
         <br>
         <br>
+        <a href="adm" class="links-nav-lateral">Admin</a>  
+        <hr class="hr-template">
         <a href="painel" class="links-nav-lateral">Painel</a>  
         <hr class="hr-template">
         <a href="profile" class="links-nav-lateral">Perfil</a>  
