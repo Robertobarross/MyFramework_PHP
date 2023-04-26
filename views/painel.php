@@ -1,5 +1,5 @@
 <?php
-include('./config/restriction.php');
+@include('./config/restriction.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
