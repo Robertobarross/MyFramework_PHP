@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,19 @@
     <title>Recuperar Senha</title>
 </head>
 <body>
-    <form method="post" action="recupera_senha">
-    <label for="email">E-mail:</label>
-    <input type="email" name="email" id="email" required>
-    <button type="submit">Recuperar senha</button>
-</form>
+    <div id="reupera-senha">
+        <br>
+        <hr>
+        <form method="post" action="recupera_senha">
+            <p class="campos-recupera-senha">
+                Digete seu email cadastrado em nossa base de dados, enviaremos uma nova senha pra voê.
+            </p>
+            <label for="email" class="campos-recupera-senha">Email:</label>
+            <input type="email" class="campos-recupera-senha" name="email" id="email" maxlength="191" required>
+            <button type="submit" class="btn-recupera-senha">Enviar</button>
+        </form>
+        <br>
+        <hr>
+    </div>
 </body>
 </html>
