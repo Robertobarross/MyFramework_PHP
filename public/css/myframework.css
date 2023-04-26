@@ -112,3 +112,34 @@ Painel
     text-align: justify;
     color: #808080;
 }
+/*
+Recuper senha
+*/
+#reupera-senha{
+    width: 100%;
+    text-align: center;
+}
+.campos-recupera-senha{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #696969;
+}
+.btn-recupera-senha{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-color: #363636;
+    background-color: #363636;
+    color: #F8F8FF;
+}
+.btn-recupera-senha:hover{
+    background-color: #696969;
+}
+/*
+Adm
+*/
+.titulo-adm{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 17%;
+    color: #696969;
+}
