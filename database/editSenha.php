@@ -18,36 +18,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Redirecionar para a página de perfil do usuário (substitua pela sua própria página)
     @$repetir_senha = $_POST['repetir_senha'];
     if ($_POST['nova_senha'] != $_POST['repetir_senha']) { 
-        echo "<div style='background-color: red; 
-                  text-align: center; 
-                  font-size: 18px; 
-                  color: white; 
-                  font-family: Arial;
-                  height: 10%;
-                  padding: 20px; '>
-                   As senhas não são iguais! Retorne para o Perfil para corrigir.
-                 <br>
-                   Retornar | 
-                <a href='profile'>
-                   Perfil
-                </a>
-              </div>";
+        session_start();
+        $_SESSION['msg-senha-negado'] = "<div class='msg-negado'>
+        As senhas não são iguais!
+        </div>";
+        header('location: profile');
         exit();
     }else{
-        echo "<div style='background-color: green; 
-                text-align: center; 
-                font-size: 18px; 
-                color: white; 
-                font-family: Arial;
-                height: 10%;
-                padding: 20px; '>
-                   Senha alterada com sucesso!
-                <br>
-                   Click em continuar para testar sua nova senha | 
-                <a href='logout'>
-                   Continuar
-                </a>
-              </div>";
+        session_start();
+        $_SESSION['msg-senha-sucesso'] = "<div class='msg-sucesso'>
+        Senha alterada com sucesso!
+        </div>";
+        header('location: profile');
     }
 }
 ?>
+
+<style type="text/css">
+    .msg-negado{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: red;
+    color: #F8F8FF;
+}
+.msg-sucesso{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: green;
+    color: #F8F8FF;
+}
+</style>
