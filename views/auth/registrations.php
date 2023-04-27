@@ -13,82 +13,59 @@
    @$nome = $_POST['nome'];
    @$email = $_POST['email'];
    @$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-   @$nivel = $_POST['nivel'];
    @$data_cadastro = $_POST['data_cadastro'];
 
    // Insere as informção no BD
-   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha, nivel, data_cadastro) VALUES (:nome, :email, :senha, :nivel, :data_cadastro)");
+   $stmt = $conn->prepare("INSERT INTO users (nome, email, senha, data_cadastro) VALUES (:nome, :email, :senha, :data_cadastro)");
 
    // Declarando variáveis
    @$stmt->bindParam(':nome', $nome);
    @$stmt->bindParam(':email', $email);
    @$stmt->bindParam(':senha', $senha);
-   @$nivel->bindParam(':nivel', $nivel);
    @$stmt->bindParam(':data_cadastro', $data_cadastro);
 
    // Verifica se as senhas são iguais
    @$repeteSenha = $_POST['repeteSenha'];
    if ($_POST['senha'] != $_POST['repeteSenha']) {
-    echo "<div style='background-color: red; 
-    text-align: center; 
-    font-size: 18px; 
-    color: white; 
-    font-family: Arial;
-    height: 10%;
-    padding: 20px; '>
-                As senhas que você digitou não são iguais!
-                <br>
-                Retornar | 
-                <a href='register'>
-                Register
-              </a>
-            </div>"; 
-     exit();
+        session_start();
+        $_SESSION['msg-senha'] = "<div class='msg-negado'>
+        As senha que você digitou não são iguais!
+        </div>";
+        header('location: register');
+       // exit();
    }
-
    // Verifica se o cadastro deu certo
    if ($stmt->execute()) {
-        echo "<div class='login'>
-                Usuário (a) $nome cadastrado com sucesso!
-                <br>
-                Fazer | 
-                <a href='login'>
-                Login
-                </a>
-            </div>"; 
+        session_start();
+        $_SESSION['msg-cadastro'] = "<div class='msg-sucesso'>
+        $nome cadastrado com sucesso!
+        </div>";
+        header('location: register');
+       // exit();
+   // Verifica se o email já é cadastrado     
    } else {
-       echo "<div class='erro'>
-                  Erro! O email: $email já existe na nossa base de dados.
-                  <br>
-                  Retornar | 
-                  <a href='register'>
-                  Register
-               </a>
-            </div>";   
+        session_start();
+        $_SESSION['msg-email'] = "<div class='msg-negado'>
+        O email $email já existe na nossa base de dados!
+        </div>";
+        header('location: register');
+       // exit();
 }
 ?>
 
 <style type="text/css">
-    .erro{
-        margin: 0;
-        width: 97%;
-        height: 10%;
-        font-size: 18px;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: red;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
-    .login{
-        margin: 0;
-        width: 97%;
-        height: 10%;
-        font-size: 18px;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: green;
-        color: white;
-        text-align: center;
-        padding: 20px;
-    }
+    .msg-negado{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: red;
+    color: #F8F8FF;
+}
+.msg-sucesso{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: green;
+    color: #F8F8FF;
+}
 </style>
