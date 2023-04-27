@@ -29,14 +29,31 @@ $login = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <!-- Edita senha do usuário lagodo -->
 <form method="post" action="editSenha">
-    <p class="dados-user">Alterar senha | id:
+
+    <?php // Retorna a mensagem de erro se as senhas não estiverem corretas
+        session_start();
+        $mensagemDeRetorno = isset($_SESSION['msg-senha-negado']) ? $_SESSION['msg-senha-negado'] : '';
+        if(!empty($mensagemDeRetorno))
+        {
+            echo $mensagemDeRetorno;
+        }
+        //------------------------------------------------------------------------
+        // Confirma que a senha foi alterada com sucesso
+        $mensagemDeRetorno = isset($_SESSION['msg-senha-sucesso']) ? $_SESSION['msg-senha-sucesso'] : '';
+        if(!empty($mensagemDeRetorno))
+        {
+            echo $mensagemDeRetorno;
+        }
+    ?>
+
+    <p class="dados-id">Alterar senha | id:
     <input type="text" class="id-user" name="id" value="<?php echo $login['id']; ?>" readonly>
     </p>
     <p class="dados-user">
-    <input type="password" name="nova_senha" id="nova_senha" class="dados-user" placeholder="Nova senha" maxlength="8" minlength="6">
+    <input type="password" name="nova_senha" id="nova_senha" class="dados-user" placeholder="Nova senha" maxlength="8" minlength="6" required>
     </p>
     <p class="dados-user">
-    <input type="password" name="repetir_senha" id="repetir_senha" class="dados-user" placeholder="Repetir senha" maxlength="8" minlength="6">
+    <input type="password" name="repetir_senha" id="repetir_senha" class="dados-user" placeholder="Repetir senha" maxlength="8" minlength="6" required>
     </p>
     <input type="submit" value="Alterar senha" class="btn">
 </form>
@@ -52,7 +69,14 @@ $login = $stmt->fetch(PDO::FETCH_ASSOC);
     float: right;
   }
   .dados-user{
-    font-size: 15px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    color: #808080;
+    width: 200px;
+  }
+  .dados-id{
+    font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     text-align: justify;
     color: #808080;
