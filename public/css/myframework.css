@@ -39,7 +39,7 @@ Estilização do login
     width: 60%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 8%;
+    margin-top: 5%;
     padding: 2%;
     text-align: center;
     background-color: #D3D3D3;
@@ -142,4 +142,18 @@ Adm
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 17%;
     color: #696969;
+}
+.msg-negado{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: red;
+    color: #F8F8FF;
+}
+.msg-sucesso{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: green;
+    color: #F8F8FF;
 }
