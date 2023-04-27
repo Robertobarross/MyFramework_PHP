@@ -18,8 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Busca o usuário correspondente ao email fornecido
     $stmt = $pdo->prepare('SELECT id, nome, email, senha, nivel FROM users WHERE email = :email');
     $stmt->execute(['email' => $email]);
-   // $stmt->execute(['nivel' => $nivel]);
     $usuario = $stmt->fetch();
+
+    if($senha != 'senha'){
+        // Se a senha ou email estiverem erradas
+        session_start();
+        $_SESSION['msg'] = "<div class='msg-negado'>
+        Email ou senha incorretos!
+        </div>";
+        header('location: login');
+       // exit;
+    } 
 
     // Verifica se o usuário existe e se a senha está correta
     if ($usuario && password_verify($senha, $usuario['senha'])) {
@@ -36,31 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['login'] = $usuario['id'];
             header("Location: painel");
             exit;
-    } else {
-        // Credenciais inválidas, exibe uma mensagem de erro
-        echo "<div class='erro'>
-               Email ou senha inválidos.
-                <br>
-                Retornar | 
-                <a href='login'>
-                Login
-                </a>
-            </div>";
-    }
+    } 
 }
 }
 ?>
 
 <style type="text/css">
     .erro{
-        margin: 0;
-        width: 97%;
-        height: 10%;
-        font-size: 18px;
+        font-size: 15px;
         font-family: Arial, Helvetica, sans-serif;
+        width: 100%;
         background-color: red;
-        color: white;
-        text-align: center;
-        padding: 20px;
+        color: #F8F8FF;
     }
 </style>
