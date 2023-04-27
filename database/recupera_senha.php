@@ -22,11 +22,47 @@ if (isset($_POST['email'])) {
         // Enviar e-mail com nova senha
         $assunto = 'Nova senha de acesso';
         $mensagem = 'Sua nova senha é: ' . $nova_senha;
-        mail($email, $assunto, $mensagem);
+        @mail($email, $assunto, $mensagem);
+        
+        ini_set('SMTP', 'smtp.gmail.com');
+        ini_set('smtp_port', 587);
+        ini_set('sendmail_from', 'robertobarros27esp@gmail.com');
+        ini_set('auth_username', 'robertobarros27esp@gmail.com');
+        ini_set('auth_password', '');
 
-        echo 'Uma nova senha foi enviada para o seu email.';
+        session_start();
+        $_SESSION['msg-email'] = "<div class='msg-sucesso'>
+        Uma nova senha foi enviada para o seu email.
+        </div>";
+        header('location: recuperarSenha');
+       // exit;
+
+       // echo 'Uma nova senha foi enviada para o seu email.';
     } else {
-        echo 'O email informado não está cadastrado em nossa base de dados.';
+        //echo 'O email informado não está cadastrado em nossa base de dados.';
+        session_start();
+        $_SESSION['msg-email-negado'] = "<div class='msg-negado'>
+        O email informado não está cadastrado em nossa base de dados.
+        </div>";
+        header('location: recuperarSenha');
+       // exit;
     }
 }
 ?>
+
+<style type="text/css">
+    .msg-negado{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: red;
+    color: #F8F8FF;
+}
+.msg-sucesso{
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    background-color: green;
+    color: #F8F8FF;
+}
+</style>
