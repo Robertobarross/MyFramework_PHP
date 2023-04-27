@@ -14,42 +14,7 @@
        include('./config/restriction.php');
        include('template.php');
        include('./database/connect.php');
-
-       
-      // session_start();
-       if (!isset($_SESSION['login'])) {
-           // Usuário não autenticado, redireciona para a página de login
-           header("Location: login");
-           exit;
-       }
-       
-       // Busca o usuário correspondente ao ID armazenado na sessão
-       $stmt = $conn->prepare('SELECT id, nome, email, senha, nivel FROM users WHERE id = :id');
-       $stmt->execute(['id' => $_SESSION['login']]);
-       $usuario = $stmt->fetch();
-       
-       // Verifica se o nível de acesso do usuário permite o acesso a esta página
-       if ($usuario['nivel'] != 'admin') {
-           // Nível de acesso inválido, exibe uma mensagem de erro e redireciona para a página de login
-           echo "<div class='erro'>
-                  Você não tem permissão para acessar esta página.
-                   <br>
-                   Retornar | 
-                   <a href='login'>
-                   Login
-                   </a>
-               </div>";
-           exit;
-       }
-       
-       
-       
-
-
-
-
-
-
+       include('./config/nivel-adm.php');
     ?>    
 
     <br>
