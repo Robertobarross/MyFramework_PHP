@@ -14,6 +14,22 @@
         <br>
         <hr>
         <form method="post" action="recupera_senha">
+
+        <?php // Retorna a mensagem de confirmando o envio do email com nova senha
+           session_start();
+           $mensagemDeRetorno = isset($_SESSION['msg-email']) ? $_SESSION['msg-email'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+           //--------------------------------------------------------------------------------
+           // Retorna a mensagem de erro se o email não estiver correto
+           $mensagemDeRetorno = isset($_SESSION['msg-email-negado']) ? $_SESSION['msg-email-negado'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+        ?>
             <p class="campos-recupera-senha">
                 Digete seu email cadastrado em nossa base de dados, enviaremos uma nova senha pra voê.
             </p>
