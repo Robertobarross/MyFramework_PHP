@@ -14,6 +14,29 @@
         <h1 class="titulo-login">Register</h1>
 
         <form action="registrations" method="POST" enctype="multipart/form-data">
+
+        <?php // Retorna a mensagem de erro se os dados de login não estiverem corretos
+           session_start();
+           $mensagemDeRetorno = isset($_SESSION['msg-senha']) ? $_SESSION['msg-senha'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+           // ------------------------------------------------------------------------------
+           // Cadastrado com sucesso
+           $mensagemDeRetorno = isset($_SESSION['msg-cadastro']) ? $_SESSION['msg-cadastro'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+           //-------------------------------------------------------------------------------
+           // O Email já existe na base de dados
+           $mensagemDeRetorno = isset($_SESSION['msg-email']) ? $_SESSION['msg-email'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+        ?>
             <p><input type="text" name="nome" class="form-login" placeholder="Digite seu nome" maxlength="80" required></p>
             
             <p><input type="email" name="email" class="form-login" placeholder="Cadastre seu email" maxlength="80" required></p>
