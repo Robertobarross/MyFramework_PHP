@@ -21,6 +21,14 @@
         <p class="titulo-painel">PAINEL</p> 
         <p class="titulo-painel">Bem vindo ao painel!</p>  
         <hr>  
+
+        <?php // Retorna a mensagem da view adm, "Acesso negado"
+           $mensagemDeRetorno = isset($_SESSION['mensagem']) ? $_SESSION['mensagem'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+        ?>
     </div>
 </body>
 </html>
