@@ -14,6 +14,16 @@
         <h1 class="titulo-login">Login</h1>
         <!-- Formulário de login -->
         <form action="logar" method="POST" enctype="multipart/form-data">  
+
+        <?php // Retorna a mensagem de erro se os dados de login não estiverem corretos
+           session_start();
+           $mensagemDeRetorno = isset($_SESSION['msg']) ? $_SESSION['msg'] : '';
+           if(!empty($mensagemDeRetorno))
+           {
+               echo $mensagemDeRetorno;
+           }
+        ?>
+
             <p><input type="email" name="email" class="form-login" placeholder="Email" maxlength="80" required></p>
         
             <p><input type="password" name="senha" class="form-login" placeholder="Senha" maxlength="8" minlength="6" required></p>
