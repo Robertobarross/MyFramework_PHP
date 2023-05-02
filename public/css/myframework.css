@@ -157,3 +157,11 @@ Adm
     background-color: green;
     color: #F8F8FF;
 }
+.btn-adm{
+    width: 20%;
+    background-color: #363636;
+    color: #F8F8FF;
+    text-decoration: none;
+    margin: 2%;
+    border-radius: 5px;
+}
