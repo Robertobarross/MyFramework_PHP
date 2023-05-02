@@ -31,11 +31,13 @@
            }
         ?>
             <p class="campos-recupera-senha">
-                Digete seu email cadastrado em nossa base de dados, enviaremos uma nova senha pra voê.
+                Digete seu email cadastrado em nossa base de dados, enviaremos uma nova senha para voê.
             </p>
             <label for="email" class="campos-recupera-senha">Email:</label>
             <input type="email" class="campos-recupera-senha" name="email" id="email" maxlength="191" required>
             <button type="submit" class="btn-recupera-senha">Enviar</button>
+            <br>
+            <a href="login" class="campos-recupera-senha">Login</a>
         </form>
         <br>
         <hr>
