@@ -8,7 +8,7 @@
        }
        
        // Busca o usuário correspondente ao ID armazenado na sessão
-       $stmt = $conn->prepare('SELECT id, nome, email, senha, nivel FROM users WHERE id = :id');
+       @$stmt = $conn->prepare('SELECT id, nome, email, senha, nivel FROM users WHERE id = :id');
        $stmt->execute(['id' => $_SESSION['login']]);
        $usuario = $stmt->fetch();
        
@@ -16,7 +16,7 @@
        if ($usuario['nivel'] != 'admin') {
            // Nível de acesso inválido, exibe uma mensagem de erro e redireciona para a página painel
            $_SESSION['mensagem'] = "<div class='msg-negado'>
-           Acesso negado! Entre em contato com o Administrador. 
+           Acesso negado ao Admin! Entre em contato com o Administrador. 
            </div>";
            header('location: painel');
            exit;
