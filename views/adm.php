@@ -20,5 +20,8 @@
     <br>
     <p class="titulo-adm">ADMINISTRAÇÃO</p>
     <hr>
+    <button class="btn-adm">
+        <a href="users" class="btn-adm">Nível acesso</a>
+    </button>
 </body>
 </html>
