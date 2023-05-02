@@ -22,10 +22,11 @@ $login = $stmt->fetch(PDO::FETCH_ASSOC);
 <!-- Id e email do usuário lagodo -->
 <div id="dados">
 <p class="dados-user">PERFIL</p>
+<hr>
+
 <p class="dados-user"><?php echo "Nome | "; echo $login['nome']; ?></p>
 <p class="dados-user">Email | <?php echo $login['email']; ?></p>
 <p class="dados-user">Cadastro | <?php echo $login['data_cadastro']; ?></p>
-<hr>
 
 <!-- Edita senha do usuário lagodo -->
 <form method="post" action="editSenha">
