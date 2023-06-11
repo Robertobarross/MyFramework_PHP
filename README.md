@@ -1,2 +1,2 @@
 # MyFramework_PHP
- Meu Framework para criar meus Projtos
+ Framework para criar Projtos, com rotas amigáveis.
