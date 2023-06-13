@@ -1,2 +1,2 @@
 # MyFramework_PHP
- Framework para criar Projtos, com rotas amigáveis.
+ Framework para criar Projtos em PHP, com rotas amigáveis.
